@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { Toaster } from 'react-hot-toast'
 
 export const metadata = {
   metadataBase: new URL('https://postgres-starter.vercel.app'),
@@ -21,7 +22,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.variable}>{children}</body>
+      <body className={inter.variable}>
+        <Toaster position="bottom-center" toastOptions={{
+            error: { duration: 3000, className: '!bg-rose-600 !text-white mb-5' },
+          }
+        }/>
+        {children}
+      </body>
     </html>
   )
 }

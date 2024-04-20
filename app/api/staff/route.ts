@@ -1,7 +1,14 @@
-import { sql } from '@vercel/postgres'
+import prisma from '@/lib/prismadb'
 
 export async function PATCH(request: Request) {
     const { id, count } = await request.json()
-    await sql`UPDATE staff SET count = ${count} WHERE id = ${id}`
+    await prisma.user.update({
+        where: {
+            id
+        },
+        data: {
+            count
+        }
+    });
     return new Response(JSON.stringify({ success: true }))
 } 

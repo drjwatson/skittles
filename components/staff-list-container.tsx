@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import StaffMember from '@/components/staff-member'
 import { motion } from 'framer-motion'
+import { SessionProvider } from 'next-auth/react'
 
 export default function StaffListContainer(staffMembers: any) {
 
@@ -55,7 +56,9 @@ export default function StaffListContainer(staffMembers: any) {
                 {
                     sortedMembers && sortedMembers.map((member: any) => (
                         <motion.div layout key={member.id}>
-                            <StaffMember incrementCount={incrementCount} decrementCount={decrementCount} member={member}/>
+                            <SessionProvider>
+                                <StaffMember incrementCount={incrementCount} decrementCount={decrementCount} member={member}/>
+                            </SessionProvider>
                         </motion.div>
                     ))
                 }
