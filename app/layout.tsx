@@ -22,6 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="shortcut icon" href="/img/favicon.ico" />
+      </head>
       <body className={inter.variable}>
         <Toaster position="bottom-center" toastOptions={{
             error: { duration: 3000, className: '!bg-rose-600 !text-white mb-5' },
