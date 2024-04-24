@@ -1,13 +1,17 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import StaffMember from '@/components/staff-member'
 import { motion } from 'framer-motion'
 import { SessionProvider } from 'next-auth/react'
 
-export default function StaffListContainer(staffMembers: any) {
+export default function StaffListContainer(staffMembers: any) {  
 
     const [members, setMembers] = useState(staffMembers.staffMembers)
+
+    useEffect(() => {
+        setMembers(staffMembers.staffMembers)
+    }, [staffMembers])
 
     const updateMemberCount = (id: number, newCount: number) => {
         const updatedMembers = members.map((member: any) =>
